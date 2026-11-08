@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VM_Training.StudentPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a submarine number ten" />
+
+            <Label
+                Text="Studentsidan"
+                FontSize="32"
+                />
+
+            <Entry Text="{Binding Name}" />
+            <Entry Text="{Binding Age}" />
+
+            <Button
+                Text="Lägg till Student"
+                Command="{Binding AddStudentCommand}"
+                />
+
+            <CollectionView ItemsSource="{Binding StudentList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*" Padding="10">
+                            <Label Grid.Column="0" Text="{Binding Name}" />
+                            <Label Grid.Column="1" Text="{Binding Age}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
